@@ -1,0 +1,14 @@
+- Todo Banco de Dados tem um nome;
+Exemplo: bd_hospital_M (bdHM01)
+
+
+	- Modelagem de Dados é quando nós modelamos os dados, onde nós criamos modelos para os dados.
+		Na modelagem de Dados precisa ter Dados relacionados, como por exemplo uma tabela, onde uma é relacionada com outra e essa outra é relacionada a uma outra tabela, e assim vai nessa sequência de relacionamentos de Dados.
+	- Para modelar as tabelas nós precisamos "Definir entidades", "Especificar atributos" e "Estabelecer relacionamentos".
+		Ao definir entidades ela faz uma lista com os principais conceitos que deseja representar no sistema.
+		Quando especificar atributos é as colunas, uma lista de atributos.
+		E ao estabelecer relacionamentos é para considerar como as entidades relacionam, os Dados devem se relacionar umas às outras.
+
+	Uma QUERY é uma consulta
+
+ 
