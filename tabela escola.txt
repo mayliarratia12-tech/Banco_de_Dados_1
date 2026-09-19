@@ -1,0 +1,220 @@
+
+Setting environment for using XAMPP for Windows.
+CAMARGO@LAB08-17 c:\xampp
+# cd c:\xampp\mysql\bin
+
+CAMARGO@LAB08-17 c:\xampp\mysql\bin
+# mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE TABLE aluno (id INT AUTO_INCREMENT PRIMARY KEY, nome VARCHAR(30), bairro VARCHAR(20), idade INT, curso varchar(20), dt_cadastro DATE);
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> create database escola;
+ERROR 1007 (HY000): Can't create database 'escola'; database exists
+MariaDB [(none)]> use escola;
+Database changed
+MariaDB [escola]>  CREATE TABLE aluno (id INT AUTO_INCREMENT PRIMARY KEY, nome VARCHAR(30), bairro VARCHAR(20), idade INT, curso varchar(20), dt_cadastro DATE);
+ERROR 1050 (42S01): Table 'aluno' already exists
+MariaDB [escola]>  show databases;
++--------------------+
+| Database           |
++--------------------+
+| escola             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [escola]>  create database escola;
+ERROR 1007 (HY000): Can't create database 'escola'; database exists
+MariaDB [escola]> select * from aluno;
++----+---------+-----------+-------+------------+-------------+
+| id | nome    | bairro    | idade | curso      | dt_cadastro |
++----+---------+-----------+-------+------------+-------------+
+|  1 | Pedro   | Mooca     |    17 | ingl?s     | 2025-02-17  |
+|  2 | Maria   | Penha     |    22 | DS         | 2018-11-23  |
+|  3 | Anna    | Itaquera  |    20 | Enfermagem | 2020-10-15  |
+|  4 | Mirelly | Sapopemba |    19 | Nutri??o   | 2019-03-23  |
++----+---------+-----------+-------+------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [escola]> insert into (id, nome, bairro,idade, curso, dt_cadastro) VALUES (5, "Vanesssa", "Mooca", 18, "Adiministracao", "2022/08/05"); insert into (id, nome, bairro,idade, curso, dt_cadastro) VALUES (6, "Sabrina", "Tatuape", 17, "Contabilidade", "2023/07/05");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(id, nome, bairro,idade, curso, dt_cadastro) VALUES (5, "Vanesssa", "Mooca", ...' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(id, nome, bairro,idade, curso, dt_cadastro) VALUES (6, "Sabrina", "Tatuape",...' at line 1
+MariaDB [escola]> INSERT INTO aluno (nome, bairro, idade, curso, dt_cadastro) VALUES ("Vanessa", "Mooca", 17,"Adiministracao","2022/03/07");
+Query OK, 1 row affected (0.015 sec)
+
+MariaDB [escola]> INSERT INTO aluno (nome, bairro, idade, curso, dt_cadastro) VALUES ("Sabrina", "Tatuape", 20,"Contabilidade","2022/08/03");
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [escola]> select * from aluno;
++----+---------+-----------+-------+----------------+-------------+
+| id | nome    | bairro    | idade | curso          | dt_cadastro |
++----+---------+-----------+-------+----------------+-------------+
+|  1 | Pedro   | Mooca     |    17 | ingl?s         | 2025-02-17  |
+|  2 | Maria   | Penha     |    22 | DS             | 2018-11-23  |
+|  3 | Anna    | Itaquera  |    20 | Enfermagem     | 2020-10-15  |
+|  4 | Mirelly | Sapopemba |    19 | Nutri??o       | 2019-03-23  |
+|  5 | Vanessa | Mooca     |    17 | Adiministracao | 2022-03-07  |
+|  6 | Sabrina | Tatuape   |    20 | Contabilidade  | 2022-08-03  |
++----+---------+-----------+-------+----------------+-------------+
+6 rows in set (0.001 sec)
+
+MariaDB [escola]> select nome, bairro from aluno;
++---------+-----------+
+| nome    | bairro    |
++---------+-----------+
+| Pedro   | Mooca     |
+| Maria   | Penha     |
+| Anna    | Itaquera  |
+| Mirelly | Sapopemba |
+| Vanessa | Mooca     |
+| Sabrina | Tatuape   |
++---------+-----------+
+6 rows in set (0.001 sec)
+
+MariaDB [escola]> select nome AS aluno, bairro AS "bairro do aluno" from aluno;
++---------+-----------------+
+| aluno   | bairro do aluno |
++---------+-----------------+
+| Pedro   | Mooca           |
+| Maria   | Penha           |
+| Anna    | Itaquera        |
+| Mirelly | Sapopemba       |
+| Vanessa | Mooca           |
+| Sabrina | Tatuape         |
++---------+-----------------+
+6 rows in set (0.001 sec)
+
+MariaDB [escola]> select * from aluno;
++----+---------+-----------+-------+----------------+-------------+
+| id | nome    | bairro    | idade | curso          | dt_cadastro |
++----+---------+-----------+-------+----------------+-------------+
+|  1 | Pedro   | Mooca     |    17 | ingl?s         | 2025-02-17  |
+|  2 | Maria   | Penha     |    22 | DS             | 2018-11-23  |
+|  3 | Anna    | Itaquera  |    20 | Enfermagem     | 2020-10-15  |
+|  4 | Mirelly | Sapopemba |    19 | Nutri??o       | 2019-03-23  |
+|  5 | Vanessa | Mooca     |    17 | Adiministracao | 2022-03-07  |
+|  6 | Sabrina | Tatuape   |    20 | Contabilidade  | 2022-08-03  |
++----+---------+-----------+-------+----------------+-------------+
+6 rows in set (0.001 sec)
+
+MariaDB [escola]> update aluno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [escola]> UPDATE escola;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [escola]> UPDATE aluno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [escola]> update aluno; Set curso = "Ingles"; where id = 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+ERROR 1193 (HY000): Unknown system variable 'curso'
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where id = 1' at line 1
+MariaDB [escola]> select * from aluno;
++----+---------+-----------+-------+----------------+-------------+
+| id | nome    | bairro    | idade | curso          | dt_cadastro |
++----+---------+-----------+-------+----------------+-------------+
+|  1 | Pedro   | Mooca     |    17 | ingl?s         | 2025-02-17  |
+|  2 | Maria   | Penha     |    22 | DS             | 2018-11-23  |
+|  3 | Anna    | Itaquera  |    20 | Enfermagem     | 2020-10-15  |
+|  4 | Mirelly | Sapopemba |    19 | Nutri??o       | 2019-03-23  |
+|  5 | Vanessa | Mooca     |    17 | Adiministracao | 2022-03-07  |
+|  6 | Sabrina | Tatuape   |    20 | Contabilidade  | 2022-08-03  |
++----+---------+-----------+-------+----------------+-------------+
+6 rows in set (0.001 sec)
+
+MariaDB [escola]> UPDATE aluno SET curso="Ingles" WHERE ID = 1;
+Query OK, 1 row affected (0.016 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [escola]> SELECT * FROM aluno ORDER BY Nome;
++----+---------+-----------+-------+----------------+-------------+
+| id | nome    | bairro    | idade | curso          | dt_cadastro |
++----+---------+-----------+-------+----------------+-------------+
+|  3 | Anna    | Itaquera  |    20 | Enfermagem     | 2020-10-15  |
+|  2 | Maria   | Penha     |    22 | DS             | 2018-11-23  |
+|  4 | Mirelly | Sapopemba |    19 | Nutri??o       | 2019-03-23  |
+|  1 | Pedro   | Mooca     |    17 | Ingles         | 2025-02-17  |
+|  6 | Sabrina | Tatuape   |    20 | Contabilidade  | 2022-08-03  |
+|  5 | Vanessa | Mooca     |    17 | Adiministracao | 2022-03-07  |
++----+---------+-----------+-------+----------------+-------------+
+6 rows in set (0.001 sec)
+
+MariaDB [escola]> SELECT * FROM aluno ORDER BY Nome DESC;
++----+---------+-----------+-------+----------------+-------------+
+| id | nome    | bairro    | idade | curso          | dt_cadastro |
++----+---------+-----------+-------+----------------+-------------+
+|  5 | Vanessa | Mooca     |    17 | Adiministracao | 2022-03-07  |
+|  6 | Sabrina | Tatuape   |    20 | Contabilidade  | 2022-08-03  |
+|  1 | Pedro   | Mooca     |    17 | Ingles         | 2025-02-17  |
+|  4 | Mirelly | Sapopemba |    19 | Nutri??o       | 2019-03-23  |
+|  2 | Maria   | Penha     |    22 | DS             | 2018-11-23  |
+|  3 | Anna    | Itaquera  |    20 | Enfermagem     | 2020-10-15  |
++----+---------+-----------+-------+----------------+-------------+
+6 rows in set (0.001 sec)
+
+MariaDB [escola]> SELECT * FROM aluno WHERE nome = "MAria";
++----+-------+--------+-------+-------+-------------+
+| id | nome  | bairro | idade | curso | dt_cadastro |
++----+-------+--------+-------+-------+-------------+
+|  2 | Maria | Penha  |    22 | DS    | 2018-11-23  |
++----+-------+--------+-------+-------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [escola]> SELECT * FROM aluno WHERE LOWER(nome) = "Maria";
++----+-------+--------+-------+-------+-------------+
+| id | nome  | bairro | idade | curso | dt_cadastro |
++----+-------+--------+-------+-------+-------------+
+|  2 | Maria | Penha  |    22 | DS    | 2018-11-23  |
++----+-------+--------+-------+-------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [escola]> select * from aluno WHERE id =1;
++----+-------+--------+-------+--------+-------------+
+| id | nome  | bairro | idade | curso  | dt_cadastro |
++----+-------+--------+-------+--------+-------------+
+|  1 | Pedro | Mooca  |    17 | Ingles | 2025-02-17  |
++----+-------+--------+-------+--------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [escola]> select * from aluno WHERE id = 1 AND bairro = "Centro";
+Empty set (0.001 sec)
+
+MariaDB [escola]> select * from aluno WHERE bairro != "Belém";
++----+---------+-----------+-------+----------------+-------------+
+| id | nome    | bairro    | idade | curso          | dt_cadastro |
++----+---------+-----------+-------+----------------+-------------+
+|  1 | Pedro   | Mooca     |    17 | Ingles         | 2025-02-17  |
+|  2 | Maria   | Penha     |    22 | DS             | 2018-11-23  |
+|  3 | Anna    | Itaquera  |    20 | Enfermagem     | 2020-10-15  |
+|  4 | Mirelly | Sapopemba |    19 | Nutri??o       | 2019-03-23  |
+|  5 | Vanessa | Mooca     |    17 | Adiministracao | 2022-03-07  |
+|  6 | Sabrina | Tatuape   |    20 | Contabilidade  | 2022-08-03  |
++----+---------+-----------+-------+----------------+-------------+
+6 rows in set (0.001 sec)
+
+MariaDB [escola]> insert into aluno (nome, bairro, idade, curso, dt_cadastro) VALUES ("Leandro", "Bele
+m", 19, "Edificacao", "2023/08/08");
+Query OK, 1 row affected (0.015 sec)
+
+MariaDB [escola]> select * from aluno;
++----+---------+-----------+-------+----------------+-------------+
+| id | nome    | bairro    | idade | curso          | dt_cadastro |
++----+---------+-----------+-------+----------------+-------------+
+|  1 | Pedro   | Mooca     |    17 | Ingles         | 2025-02-17  |
+|  2 | Maria   | Penha     |    22 | DS             | 2018-11-23  |
+|  3 | Anna    | Itaquera  |    20 | Enfermagem     | 2020-10-15  |
+|  4 | Mirelly | Sapopemba |    19 | Nutri??o       | 2019-03-23  |
+|  5 | Vanessa | Mooca     |    17 | Adiministracao | 2022-03-07  |
+|  6 | Sabrina | Tatuape   |    20 | Contabilidade  | 2022-08-03  |
+|  7 | Leandro | Belem     |    19 | Edificacao     | 2023-08-08  |
++----+---------+-----------+-------+----------------+-------------+
+7 rows in set (0.000 sec)
